@@ -4,31 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fab} from "@fortawesome/free-brands-svg-icons";
 import {
-    faArrowLeft,
-    faBars,
-    faBoxesStacked,
-    faCartShopping,
-    faCheck,
-    faChevronDown,
-    faChevronRight,
-    faClock, faEnvelope,
-    faEye,
-    faHeart,
-    faKey,
-    faMagnifyingGlass,
-    faMessage,
-    faMoon,
-    faNewspaper,
-    faPenToSquare,
-    faPersonWalking,
     faPhone,
-    faSun,
-    faTag,
-    faTrash,
-    faTruck,
-    faUser,
-    faUsers,
-    faXmark
 } from "@fortawesome/free-solid-svg-icons";
 
 import {notify} from "@/utils/toasts.js";
@@ -42,33 +18,7 @@ import router from "./router";
 import "@/assets/css/main.css";
 import "@/assets/css/fonts.css";
 
-library.add(faBars);
-library.add(faUser);
-library.add(faKey);
-library.add(faMessage);
-library.add(faMagnifyingGlass);
-library.add(faSun)
-library.add(faCartShopping)
-library.add(faHeart)
-library.add(faChevronRight)
-library.add(fab)
-library.add(faMoon)
-library.add(faXmark)
-library.add(faChevronDown)
-library.add(faCheck)
-library.add(faPhone)
-library.add(faEye)
-library.add(faClock)
-library.add(faArrowLeft)
-library.add(faTag)
-library.add(faPersonWalking)
-library.add(faTruck)
-library.add(faTrash)
-library.add(faUsers)
-library.add(faBoxesStacked)
-library.add(faNewspaper)
-library.add(faPenToSquare)
-library.add(faEnvelope)
+library.add(faPhone);
 
 createApp(App)
     .use(store)

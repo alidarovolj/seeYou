@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    transition: all 1s;
+    scroll-behavior: smooth;
+}
+
 html {
-    background: #f3f3f4;
+    background: #000;
 }
 
 html.dark {
@@ -49,18 +54,19 @@ html.dark {
 
 
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "Gilroy", sans-serif;
     font-size: 0.875rem;
-    color: #373737;
-    background: #f3f3f4;
+    color: #fff;
+    background: #000;
+    font-style: normal;
+}
+
+.benz {
+    font-family: "Benzin", sans-serif;
 }
 
 body.dark {
     background: #131313;
-}
-
-a {
-    text-decoration: underline;
 }
 
 .header a {
@@ -92,4 +98,20 @@ a:hover {
 .nav a:hover,
 .nav a.router-link-exact-active {
     color: #D62D2D;
+}
+
+.carousel__prev {
+    background: #935ecd;
+    opacity: 1;
+    border-radius: 100%;
+    color: #fff;
+    left: -15%;
+}
+
+.carousel__next {
+    background: #935ecd;
+    opacity: 1;
+    border-radius: 100%;
+    color: #fff;
+    right: -15%;
 }

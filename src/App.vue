@@ -1,36 +1,31 @@
 <template>
   <metainfo>
     <template #title="{ content }">{{
-        content ? `${content} | TrustQuality` : `SITE_NAME`
+        content ? `${content} | SeeYou` : `SITE_NAME`
       }}
     </template>
   </metainfo>
-  <div class="bg-whiteColor dark:bg-darkBg">
-    <DefaultLayout
-        v-if="$route.name !== 'AdminPage' && $route.name !== 'AdminProducts' && $route.name !== 'AdminCategories' && $route.name !== 'AdminOrders' && $route.name !== 'AdminNews' && $route.name !== 'AdminFeedback'">
+  <div class="relative">
+    <img class="top-0 left-0 absolute" src="@/assets/img/mainPage/bg.png" alt="">
+    <DefaultLayout>
       <router-view></router-view>
     </DefaultLayout>
-    <AdminLayout v-else>
-      <router-view></router-view>
-    </AdminLayout>
   </div>
 </template>
 
 <script>
 import DefaultLayout from "@/layouts/default.vue";
-import AdminLayout from "@/layouts/AdminLayout.vue";
 import "vue3-toastify/dist/index.css";
 import {useMeta} from "vue-meta";
 
 export default {
   name: "App",
   components: {
-    DefaultLayout,
-    AdminLayout
+    DefaultLayout
   },
   setup() {
     useMeta({
-      title: "TrustQuality",
+      title: "SeeYou",
       htmlAttrs: {lang: "en", amp: true},
     });
   },
@@ -45,19 +40,6 @@ export default {
     } else {
       document.documentElement.classList.remove("dark");
     }
-    if (!localStorage.cart) {
-      localStorage.setItem('cart', JSON.stringify([]))
-    }
-    if (!localStorage.orderNumber) {
-      const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      let result = "";
-      for (let i = 0; i < 6; i++) {
-        const randomIndex = Math.floor(Math.random() * symbols.length);
-        result += symbols.charAt(randomIndex);
-      }
-      localStorage.setItem('orderNumber', JSON.stringify(result))
-    }
-
   },
   methods: {
     scrollTop() {
