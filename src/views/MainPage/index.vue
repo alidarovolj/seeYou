@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 lg:px-0">
+  <div class="container mx-auto px-4 lg:px-0 text-white">
     <div id="main" class="relative">
       <img class="w-full lg:w-[70%] absolute left-1/2 top-1/2 lg:top-0 -translate-y-1/2 lg:translate-y-0 -translate-x-1/2 h-auto" src="@/assets/img/mainPage/heroBg.png"
            alt="">
@@ -93,7 +93,7 @@
       </div>
     </div>
   </div>
-  <div id="about" class="relative mb-36">
+  <div id="about" class="relative mb-36 text-white">
     <img class="absolute right-0 -top-36" src="@/assets/img/mainPage/bg.png" alt="">
     <div class="relative z-20">
       <div class="container mx-auto px-4 lg:px-0">
@@ -123,7 +123,7 @@
       </div>
     </div>
   </div>
-  <div id="contacts" class="relative mb-36">
+  <div id="contacts" class="relative mb-36 text-white">
     <img class="absolute right-0 -top-36" src="@/assets/img/mainPage/bg.png" alt="">
     <div class="relative z-20">
       <div class="container mx-auto px-4 lg:px-0">
@@ -143,7 +143,7 @@
             </div>
           </div>
         </div>
-        <div class="justify-between block lg:flex">
+        <div class="justify-between block lg:hidden">
           <div class="flex mb-5" v-for="(item, index) of steps" :key="index">
             <p style="text-orientation: mixed; writing-mode: vertical-lr;"
                class="bg-mainColor text-end text-xl font-black font-benzin px-7 py-9 rounded-2xl">{{ item.title }}</p>
@@ -157,7 +157,7 @@
       </div>
     </div>
   </div>
-  <div class="relative z-20">
+  <div class="relative z-20 text-white">
     <div class="container mx-auto px-4 lg:px-0">
       <div class="mb-5">
         <h2 class="text-xl lg:text-5xl font-benzin font-black mb-5">Оставить заявку</h2>
