@@ -1,13 +1,17 @@
 <template>
   <div class="container mx-auto px-4 lg:px-0 text-white">
     <div id="main" class="relative">
-      <img class="w-full lg:w-[70%] absolute left-1/2 top-1/2 lg:top-0 -translate-y-1/2 lg:translate-y-0 -translate-x-1/2 h-auto" src="@/assets/img/mainPage/heroBg.png"
-           alt="">
+      <img
+          class="w-full lg:w-[70%] absolute left-1/2 top-1/2 lg:top-0 -translate-y-1/2 lg:translate-y-0 -translate-x-1/2 h-auto"
+          src="@/assets/img/mainPage/heroBg.png"
+          alt="">
       <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[140px]"
            style="background: #BB86FC; filter: blur(281px);"></div>
       <div class="py-28 relative z-50 w-full lg:w-[70%] mx-auto">
-        <h1 class="text-2xl lg:text-[66px] font-bold text-white text-center mx-auto benz mb-3 lg:mb-0">Создадим ваш бизнес в цифровом мире!</h1>
-        <p class="text-xl lg:text-4xl font-medium text-white text-center">Разработка сайтов любой сложности исходя из Ваших
+        <h1 class="text-2xl lg:text-[66px] font-bold text-white text-center mx-auto benz mb-3 leading-none">Создадим ваш
+          бизнес в цифровом мире!</h1>
+        <p class="text-xl lg:text-4xl font-medium text-white text-center">Разработка сайтов любой сложности исходя из
+          Ваших
           потребностей</p>
       </div>
     </div>
@@ -20,7 +24,8 @@
         <div class="w-full lg:w-2/3 flex flex-wrap justify-between mr-5">
           <div
               class="w-full block lg:flex justify-end relative bg-blockBg pb-6 pt-7 px-6 rounded-2xl text-end mb-5 overflow-y-hidden h-full lg:h-auto">
-            <img class="relative lg:absolute left-2 bottom-0 h-1/2 lg:h-[110%] z-20" src="@/assets/img/mainPage/blocks/1.png" alt="">
+            <img class="relative lg:absolute left-2 bottom-0 h-1/2 lg:h-[110%] z-20"
+                 src="@/assets/img/mainPage/blocks/1.png" alt="">
             <div style="border-radius: 333px; background: #BB86FC; filter: blur(74px);"
                  class="w-1/2 absolute left-20 top-1/2 -translate-y-1/2 h-full "></div>
             <div class="w-full lg:w-[50%] h-1/2 lg:h-auto relative z-20">
@@ -43,7 +48,8 @@
                 по продвижению сайта - Контекстная реклама и SEO продвижение.</p>
             </div>
           </div>
-          <div class="w-full lg:w-half flex relative bg-blockBg pb-6 pt-7 px-6 rounded-2xl overflow-hidden mb-5 lg:mb-0">
+          <div
+              class="w-full lg:w-half flex relative bg-blockBg pb-6 pt-7 px-6 rounded-2xl overflow-hidden mb-5 lg:mb-0">
             <img class="absolute right-0 bottom-0 z-20" src="@/assets/img/mainPage/blocks/3.png" alt="">
             <div style="border-radius: 333px; background: #BB86FC; filter: blur(74px);"
                  class="w-1/2 absolute left-0 top-0 -translate-y-1/2 h-full "></div>
@@ -55,31 +61,37 @@
             </div>
           </div>
         </div>
-        <div class="w-full lg:w-1/3 h-full lg:h-auto bg-blockBg flex flex-col py-12 px-10 rounded-2xl mb-5 lg:mb-0">
-          <h3 class="font-benzin text-2xl font-bold mb-4">Техподдержка сайтов</h3>
-          <p class="mb-6 text-xl font-medium">Регулярное обновление сайта, обеспечение сайта стабильной работой и
-            контроль за безопасностью сайта в Астане.</p>
-          <img class="static lg:absolute right-0 bottom-0 z-20" src="@/assets/img/mainPage/blocks/4.png" alt="">
+        <div
+            class="w-full lg:w-1/3 h-full lg:h-auto bg-blockBg flex flex-col py-0 lg:py-12 px-0 lg:px-10 rounded-2xl mb-5 lg:mb-0">
+          <div class="py-12 lg:py-0 px-10 lg:px-0">
+            <h3 class="font-benzin text-2xl font-bold mb-4">Техподдержка сайтов</h3>
+            <p class="mb-6 text-xl font-medium">Регулярное обновление сайта, обеспечение сайта стабильной работой и
+              контроль за безопасностью сайта в Астане.</p>
+          </div>
+          <img class="static lg:absolute right-0 bottom-0 z-20 rounded-b-2xl" src="@/assets/img/mainPage/blocks/4.png"
+               alt="">
           <div style="border-radius: 333px; background: #BB86FC; filter: blur(74px);"
                class="w-1/2 absolute right-0 bottom-0 h-[300px] w-[300px]"></div>
         </div>
       </div>
     </div>
     <div id="portfolio" class="relative z-20 mb-36">
-      <div class="mb-9 text-center relative">
-        <h2 class="text-3xl lg:text-5xl font-black mb-3">UniFreightCo</h2>
-        <p class="text-sm lg:text-xl font-medium">UniFreight — это компания по управлению грузоперевозками, профессионально
-          управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления
-          грузоперевозками</p>
-        <div style="background: #BB86FC; filter: blur(281px);" class="w-full h-36 absolute left-0 top-0"></div>
-      </div>
-      <div class="flex justify-center relative">
-        <div class="w-[90%] relative overflow-hidden">
+      <div class="block relative">
+        <div class="text-center w-full mb-9">
+          <h2 class="text-3xl lg:text-5xl font-black mb-3">{{ slides[currentSlideIndex].title }}</h2>
+          <p class="text-sm lg:text-xl font-medium">{{ slides[currentSlideIndex].description }}</p>
+          <div style="background: #BB86FC; filter: blur(281px);" class="w-full h-36 absolute left-0 top-0"></div>
+        </div>
+        <div class="mx-auto w-[90%] relative overflow-hidden">
           <img class="w-full" src="@/assets/img/mainPage/portfolio/1.png" alt="">
-          <carousel :breakpoints="breakpoints" v-bind="settings"
-                    class="absolute z-10 top-2 left-1/2 -translate-x-1/2 w-[77%]">
-            <slide v-for="slide in 10" :key="slide">
-              <img class="w-full" src="@/assets/img/mainPage/portfolio/2.png" alt="">
+          <carousel
+              @slide-end="handleSlideStart"
+              @init="handleInit"
+              :breakpoints="breakpoints" v-bind="settings"
+              :wrapAround="true"
+              class="absolute z-10 top-2 left-1/2 -translate-x-1/2 w-[77%]">
+            <slide v-for="slide in slides" :key="slide">
+              <img class="w-full" :src="slide.img" alt="">
             </slide>
 
             <template #addons>
@@ -98,7 +110,8 @@
     <div class="relative z-20">
       <div class="container mx-auto px-4 lg:px-0">
         <div class="mb-7">
-          <h2 class="text-xl lg:text-3xl lg:text-5xl font-benzin font-black mb-5">Сотрудничаем с ведущими компаниями</h2>
+          <h2 class="text-xl lg:text-3xl lg:text-5xl font-benzin font-black mb-5">Сотрудничаем с ведущими
+            компаниями</h2>
           <p class="text-sm lg:text-2xl">У нас есть все необходимое для запуска и развития вашего бизнеса</p>
         </div>
         <div class="block lg:flex justify-between">
@@ -115,7 +128,9 @@
               <div class="flex items-end w-4/5 mx-auto mb-8 justify-center">
                 <img class="h-32 w-auto object-contain" :src="works[activeBlock].img" alt="">
               </div>
-              <p class="text-2xl lg:text-3xl font-bold text-start lg:text-center">{{ works[activeBlock].title_full }}</p>
+              <p class="text-2xl lg:text-3xl font-bold text-start lg:text-center">{{
+                  works[activeBlock].title_full
+                }}</p>
               <p class="text-base lg:text-xl text-start lg:text-center">{{ works[activeBlock].description }}</p>
             </div>
           </div>
@@ -164,7 +179,8 @@
         <p class="text-sm">Оставьте информацию о себе, мы перезвоним вам чтобы узнать детали</p>
       </div>
       <div class="block lg:flex justify-between">
-        <div class="w-full lg:w-half bg-blockBg rounded-[20px] p-10 flex flex-col justify-between relative overflow-hidden mb-3 lg:mb-0">
+        <div
+            class="w-full lg:w-half bg-blockBg rounded-[20px] p-10 flex flex-col justify-between relative overflow-hidden mb-3 lg:mb-0">
           <div style="border-radius: 494px; opacity: 0.5; background: #BB86FC; filter: blur(157px);"
                class="w-[400px] h-[400px] absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2"></div>
           <p class="text-xl lg:text-4xl font-semibold">Начать сотрудничество – проще простого</p>
@@ -203,8 +219,9 @@
 
 <script>
 import {useMeta} from "vue-meta";
-import 'vue3-carousel/dist/carousel.css'
 import {Carousel, Navigation, Slide} from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
+import img1 from "@/assets/img/mainPage/portfolio/2.png"
 
 export default {
   name: "MainPage",
@@ -218,8 +235,35 @@ export default {
   },
   data() {
     return {
+      currentSlideIndex: 0,
       activeBlock: 0,
       activeStep: 0,
+      slides: [
+        {
+          id: 1,
+          title: "UniFreightCo1",
+          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
+          img: img1
+        },
+        {
+          id: 2,
+          title: "UniFreightCo2",
+          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
+          img: img1
+        },
+        {
+          id: 3,
+          title: "UniFreightCo3",
+          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
+          img: img1
+        },
+        {
+          id: 4,
+          title: "UniFreightCo4",
+          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
+          img: img1
+        },
+      ],
       steps: [
         {
           id: 1,
@@ -321,6 +365,15 @@ export default {
         },
       }
     }
+  },
+  methods: {
+    handleInit() {
+      console.log('created')
+    },
+    handleSlideStart(data) {
+      console.log('slide-start', data)
+      this.currentSlideIndex = data.currentSlideIndex
+    },
   }
 }
 </script>
