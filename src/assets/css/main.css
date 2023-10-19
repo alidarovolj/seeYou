@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 * {
-    transition: all 1s;
     scroll-behavior: smooth;
+}
+
+.carousel__slide {
+    align-items: start;
 }
 
 html {

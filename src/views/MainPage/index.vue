@@ -91,7 +91,9 @@
               :wrapAround="true"
               class="absolute z-10 top-2 left-1/2 -translate-x-1/2 w-[77%]">
             <slide v-for="slide in slides" :key="slide">
-              <img class="w-full" :src="slide.img" alt="">
+              <div class="rounded-t-sm sm:rounded-t-2xl max-h-[145px] h-[145px] md:max-h-[335px] md:h-[335px] sm:max-h-[273px] sm:h-[273px] lg:max-h-[455px] lg:h-[455px] xl:max-h-[575px] xl:h-[575px] overflow-y-auto">
+                <img class="w-full" :src="slide.img" alt="">
+              </div>
             </slide>
 
             <template #addons>
@@ -138,7 +140,7 @@
       </div>
     </div>
   </div>
-  <div id="contacts" class="relative mb-36 text-white">
+  <div class="relative mb-36 text-white">
     <img class="absolute right-0 -top-36" src="@/assets/img/mainPage/bg.png" alt="">
     <div class="relative z-20">
       <div class="container mx-auto px-4 lg:px-0">
@@ -149,9 +151,9 @@
         <div class="hidden justify-between lg:flex">
           <div @mouseover="activeStep = index" class="flex" v-for="(item, index) of steps" :key="index">
             <p style="text-orientation: mixed; writing-mode: vertical-lr;"
-               class="bg-mainColor text-end text-2xl font-black font-benzin px-7 py-9 rounded-2xl">{{ item.title }}</p>
+               class="bg-mainColor text-end text-2xl font-black font-benzin px-7 py-9 rounded-2xl uppercase">{{ item.title }}</p>
             <div class="flex items-center justify-center">
-              <p class="overflow-x-hidden flex items-center overflow-y-hidden py-16 w-0 text-2xl rounded-r-2xl"
+              <p class="overflow-x-hidden flex items-center transition-all overflow-y-hidden py-16 w-0 text-2xl rounded-r-2xl"
                  :class="{ 'w-[255px] pr-5 pl-8 bg-blockBg h-[95%]' : activeStep === index }"><span>{{
                   item.description
                 }}</span></p>
@@ -172,7 +174,7 @@
       </div>
     </div>
   </div>
-  <div class="relative z-20 text-white">
+  <div id="contacts" class="relative z-20 text-white pb-10">
     <div class="container mx-auto px-4 lg:px-0">
       <div class="mb-5">
         <h2 class="text-xl lg:text-5xl font-benzin font-black mb-5">Оставить заявку</h2>
@@ -180,14 +182,14 @@
       </div>
       <div class="block lg:flex justify-between">
         <div
-            class="w-full lg:w-half bg-blockBg rounded-[20px] p-10 flex flex-col justify-between relative overflow-hidden mb-3 lg:mb-0">
+            class="w-full lg:w-half bg-blockBg rounded-[20px] p-5 lg:p-10 flex flex-col justify-between relative overflow-hidden mb-3 lg:mb-0">
           <div style="border-radius: 494px; opacity: 0.5; background: #BB86FC; filter: blur(157px);"
                class="w-[400px] h-[400px] absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2"></div>
-          <p class="text-xl lg:text-4xl font-semibold">Начать сотрудничество – проще простого</p>
+          <p class="text-lg lg:text-4xl font-semibold mb-3">Начать сотрудничество – проще простого</p>
           <div>
-            <p class="text-lg lg:text-xl mb-3">+7 775 288 88 33</p>
-            <p class="text-lg lg:text-xl mb-3">+7 707 874 55 44</p>
-            <p class="text-lg lg:text-xl">info@xbase.kz</p>
+            <p class="text-base lg:text-xl mb-3">+7 775 288 88 33</p>
+            <p class="text-base lg:text-xl mb-3">+7 707 874 55 44</p>
+            <p class="text-base lg:text-xl">info@xbase.kz</p>
           </div>
         </div>
         <div class="w-full lg:w-half flex flex-col mb-3 lg:mb-0">
@@ -211,7 +213,7 @@
         </div>
       </div>
       <div class="flex justify-end">
-        <p class="w-max bg-mainColor text-white px-[60px] py-5 rounded-2xl text-3xl font-semibold">Отправить</p>
+        <p class="w-max bg-mainColor text-white px-[60px] py-5 rounded-2xl text-xl lg:text-3xl font-semibold">Отправить</p>
       </div>
     </div>
   </div>
@@ -221,7 +223,18 @@
 import {useMeta} from "vue-meta";
 import {Carousel, Navigation, Slide} from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-import img1 from "@/assets/img/mainPage/portfolio/2.png"
+import imgWorks1 from "@/assets/img/mainPage/works/1.png"
+import imgWorks2 from "@/assets/img/mainPage/works/2.png"
+import imgWorks3 from "@/assets/img/mainPage/works/3.png"
+import imgWorks4 from "@/assets/img/mainPage/works/4.png"
+import imgWorks5 from "@/assets/img/mainPage/works/5.png"
+import imgWorks6 from "@/assets/img/mainPage/works/6.png"
+import img1 from "@/assets/img/mainPage/partners/1.webp"
+import img2 from "@/assets/img/mainPage/partners/2.png"
+import img3 from "@/assets/img/mainPage/partners/3.png"
+import img4 from "@/assets/img/mainPage/partners/4.png"
+import img5 from "@/assets/img/mainPage/partners/5.png"
+import img6 from "@/assets/img/mainPage/partners/6.png"
 
 export default {
   name: "MainPage",
@@ -238,114 +251,138 @@ export default {
       currentSlideIndex: 0,
       activeBlock: 0,
       activeStep: 0,
+      form: {
+
+      },
       slides: [
         {
           id: 1,
-          title: "UniFreightCo1",
-          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
-          img: img1
+          title: "AllurGroup",
+          description: "Allur - крупнейшая автомобильная компания Казахстана",
+          img: imgWorks1
         },
         {
           id: 2,
-          title: "UniFreightCo2",
-          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
-          img: img1
+          title: "Abitech",
+          description: "Abitech - эффективное управление процессами и активами",
+          img: imgWorks2
         },
         {
           id: 3,
-          title: "UniFreightCo3",
-          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
-          img: img1
+          title: "GazBas",
+          description: "Компания \"Trust Quality\" - Ваш надежный партнер для инновационных и рациональных решений по освещению.",
+          img: imgWorks3
         },
         {
           id: 4,
-          title: "UniFreightCo4",
-          description: "UniFreight — это компания по управлению грузоперевозками, профессионально управляемая командой экспертов с глубокими знаниями во всех аспектах глобального управления грузоперевозками",
-          img: img1
+          title: "Актив",
+          description: "Актив - центр обслуживания бизнеса",
+          img: imgWorks4
+        },
+        {
+          id: 5,
+          title: "Apple City Corps",
+          description: "Apple City Corps – один из крупнейших дистрибьюторов на территории Центральной Азии и Казахстана.",
+          img: imgWorks5
+        },
+        {
+          id: 6,
+          title: "CGService",
+          description: "CGService - какую профессию выберет ваш ребенок?",
+          img: imgWorks6
         },
       ],
       steps: [
         {
           id: 1,
-          title: "СБОР ИНФОРМАЦИИ",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Сбор информации",
+          description: "Знакомство со сферой деятельности и обсуждение пожеланий",
         },
         {
           id: 2,
-          title: "ТЕХ. ЗАДАНИЕ",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Тех. задание",
+          description: "Разработка технического задания. Описание ключевых моментов",
         },
         {
           id: 3,
-          title: "ПРОЕКТИРОВАНИЕ",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Проектирование",
+          description: "Подготовка и проектирование. Составление плана будущего проекта",
         },
         {
           id: 4,
-          title: "ДИЗАЙН",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Дизайн",
+          description: "Разработка, согласование и утверждение персонального дизайна",
         },
         {
           id: 5,
-          title: "ВЕРСТКА",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Верстка",
+          description: "Индивидуальная адаптивная верстка (создание сайта) с чистым кодом",
         },
         {
           id: 6,
-          title: "КОДИРОВАНИЕ",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Кодирование",
+          description: "Программирование сайта, подключение необходимых скриптов и модулей",
         },
         {
           id: 7,
-          title: "АДМИН ПАНЕЛЬ",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Админ. панель",
+          description: "Интеграция сайта с системой управления. Подключение админ панели",
         },
         {
           id: 8,
-          title: "ЗАПУСК САЙТА",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Наполнение",
+          description: "Наполнение сайта информацией. Создание разделов и подразделов",
         },
         {
           id: 9,
-          title: "ПОДДЕРЖКА",
-          description: "Половина успеха любого заметного сервиса связана с аналитикой,потому что она позволяет ещё на этапе идеи и прототипа понять, что ждётваш продукт после запуска, как избежать серьезных ошибок и дойти до цели."
+          title: "Оптимизация",
+          description: "Поисковая оптимизация под ключевые запросы. Составление заголовков и описания",
         },
       ],
       works: [
         {
-          name: "У нас есть все необходимое для запуска и развития вашего бизнеса",
-          img: "https://upload.wikimedia.org/wikipedia/commons/4/40/AllurLogo.png",
+          img: img5,
           title: "AllurGroup",
+          link: "https://allur.kz/",
           title_full: "Allur - крупнейшая автомобильная компания Казахстана",
           description: "Производим и реализуем автомобили для личного пользования и бизнеса. Способствуем развитию городской мобильности, оснащая страну общественным и специализированным транспортом."
         },
         {
-          name: "У нас есть все необходимое для запуска и развития вашего бизнеса",
-          img: "https://upload.wikimedia.org/wikipedia/commons/4/40/AllurLogo.png",
-          title: "AllurGroup",
-          title_full: "Allur2 - крупнейшая автомобильная компания Казахстана",
-          description: "Производим и реализуем автомобили для личного пользования и бизнеса. Способствуем развитию городской мобильности, оснащая страну общественным и специализированным транспортом."
+          img: img2,
+          title: "Abitech",
+          link: "https://abitech.kz/",
+          title_full: "Abitech - эффективное управление процессами и активами",
+          description: "Профессиональный опыт в консалтинге и внедрению собственных разработок в различных отраслях промышленности"
         },
         {
-          name: "У нас есть все необходимое для запуска и развития вашего бизнеса",
-          img: "https://upload.wikimedia.org/wikipedia/commons/4/40/AllurLogo.png",
-          title: "AllurGroup",
-          title_full: "Allur3 - крупнейшая автомобильная компания Казахстана",
-          description: "Производим и реализуем автомобили для личного пользования и бизнеса. Способствуем развитию городской мобильности, оснащая страну общественным и специализированным транспортом."
+          img: img3,
+          title: "GazBas",
+          link: "https://gazbas.kz/",
+          title_full: "Компания \"Trust Quality\" - Ваш надежный партнер для инновационных и рациональных решений по освещению.",
+          description: "Компания TrustQuality специализируется на поставке высококачественных автомобильных дворников и ламп для широкого спектра автомобилей. Нашей главной целью является обеспечение безопасности и комфорта на дороге, предоставляя клиентам доступ к самым современным и надежным автомобильным аксессуарам."
         },
         {
-          name: "У нас есть все необходимое для запуска и развития вашего бизнеса",
-          img: "https://upload.wikimedia.org/wikipedia/commons/4/40/AllurLogo.png",
-          title: "AllurGroup",
-          title_full: "Allur4 - крупнейшая автомобильная компания Казахстана",
-          description: "Производим и реализуем автомобили для личного пользования и бизнеса. Способствуем развитию городской мобильности, оснащая страну общественным и специализированным транспортом."
+          img: img4,
+          title: "Актив",
+          link: "https://centeraktiv.kz/",
+          title_full: "Актив - центр обслуживания бизнеса",
+          description: "Интересы клиента всегда на первом месте. Полная вовлеченность и решение поставленной задачи исключительно с точки зрения: как будет лучше, удобней и экономичней для предпринимателя или его компании."
         },
         {
-          name: "У нас есть все необходимое для запуска и развития вашего бизнеса",
-          img: "https://upload.wikimedia.org/wikipedia/commons/4/40/AllurLogo.png",
-          title: "AllurGroup",
-          title_full: "Allur5 - крупнейшая автомобильная компания Казахстана",
-          description: "Производим и реализуем автомобили для личного пользования и бизнеса. Способствуем развитию городской мобильности, оснащая страну общественным и специализированным транспортом."
+          img: img1,
+          title: "Apple City Corps",
+          link: "https://www.applecity.kz/",
+          title_full: "Apple City Corps – один из крупнейших дистрибьюторов на территории Центральной Азии и Казахстана.",
+          description: "Лидер в дистрибьюции продукции FMCG на территории Центральной Азии и Казахстана"
+        },
+        {
+          img: img6,
+          title: "CGService",
+          link: "https://cgservice.kz/",
+          title_full: "CGService - какую профессию выберет ваш ребенок?",
+          description: "Пройдите онлайн-тест по профориентации\n" +
+              "для анализа личности подростка и его\n" +
+              "карьерного типа. Получите список подходящих профессий и рекомендации к действию."
         }
       ],
       settings: {
