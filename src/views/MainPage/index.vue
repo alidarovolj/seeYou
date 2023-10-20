@@ -30,8 +30,8 @@
                  class="w-1/2 absolute left-20 top-1/2 -translate-y-1/2 h-full "></div>
             <div class="w-full lg:w-[50%] h-1/2 lg:h-auto relative z-20">
               <h3 class="font-benzin text-xl lg:text-2xl font-bold mb-4">Разработка сайтов</h3>
-              <p class="mb-6 text-xl font-medium">Создание и разработка сайтов в Астане (Нур-Султане) с индивидуальным
-                дизайном по доступным ценам</p>
+              <p class="mb-6 text-xl font-medium">Создаем современные, функциональные сайты, гарантируя высокое качество
+                и индивидуальный подход</p>
               <div class="flex justify-end">
                 <p class="py-3 px-6 bg-mainColor rounded text-white w-max">Заказать сайт</p>
               </div>
@@ -43,9 +43,10 @@
             <div style="border-radius: 333px; background: #BB86FC; filter: blur(74px);"
                  class="w-1/2 absolute left-0 bottom-0 translate-y-1/2 h-full "></div>
             <div class="w-[80%] relative z-20">
-              <h3 class="font-benzin text-2xl font-bold mb-4">Продвижение сайтов</h3>
-              <p class="mb-6 text-xl font-medium">Эффективное продвижение вашего веб-сайта в Астане. Среди наших услуг
-                по продвижению сайта - Контекстная реклама и SEO продвижение.</p>
+              <h3 class="font-benzin text-2xl font-bold mb-4">Аналитика для успешного бизнеса</h3>
+              <p class="mb-6 text-xl font-medium">Мы предлагаем услуги Data Science, которые помогут вам анализировать
+                данные, выявлять тенденции и
+                принимать обоснованные бизнес-решения на основе фактов.</p>
             </div>
           </div>
           <div
@@ -64,9 +65,10 @@
         <div
             class="w-full lg:w-1/3 h-full lg:h-auto bg-blockBg flex flex-col py-0 lg:py-12 px-0 lg:px-10 rounded-2xl mb-5 lg:mb-0">
           <div class="py-12 lg:py-0 px-10 lg:px-0">
-            <h3 class="font-benzin text-2xl font-bold mb-4">Техподдержка сайтов</h3>
-            <p class="mb-6 text-xl font-medium">Регулярное обновление сайта, обеспечение сайта стабильной работой и
-              контроль за безопасностью сайта в Астане.</p>
+            <h3 class="font-benzin text-2xl font-bold mb-4">Приложения, которые приносят прибыль</h3>
+            <p class="mb-6 text-xl font-medium">Наши мобильные приложения - это инструменты, спроектированные для
+              увеличения дохода и эффективности вашего бизнеса. Мы создаем индивидуальные приложения, нацеленные на
+              решение конкретных бизнес-задач и увеличение базы клиентов.</p>
           </div>
           <img class="static lg:absolute right-0 bottom-0 z-20 rounded-b-2xl" src="@/assets/img/mainPage/blocks/4.png"
                alt="">
@@ -91,7 +93,7 @@
               :wrapAround="true"
               class="absolute z-10 top-2 left-1/2 -translate-x-1/2 w-[77%]">
             <slide v-for="slide in slides" :key="slide">
-              <div class="rounded-t-sm sm:rounded-t-2xl max-h-[145px] h-[145px] md:max-h-[335px] md:h-[335px] sm:max-h-[273px] sm:h-[273px] lg:max-h-[455px] lg:h-[455px] xl:max-h-[575px] xl:h-[575px] overflow-y-auto">
+              <div class="scroll rounded-t-sm sm:rounded-t-2xl max-h-[145px] h-[145px] md:max-h-[335px] md:h-[335px] sm:max-h-[273px] sm:h-[273px] lg:max-h-[455px] lg:h-[455px] xl:max-h-[575px] xl:h-[575px] overflow-y-auto">
                 <img class="w-full" :src="slide.img" alt="">
               </div>
             </slide>
@@ -251,62 +253,60 @@ export default {
       currentSlideIndex: 0,
       activeBlock: 0,
       activeStep: 0,
-      form: {
-
-      },
+      form: {},
       slides: [
         {
           id: 1,
-          title: "AllurGroup",
-          description: "Allur - крупнейшая автомобильная компания Казахстана",
-          img: imgWorks1
-        },
-        {
-          id: 2,
           title: "Abitech",
           description: "Abitech - эффективное управление процессами и активами",
           img: imgWorks2
         },
         {
-          id: 3,
+          id: 2,
           title: "GazBas",
           description: "Компания \"Trust Quality\" - Ваш надежный партнер для инновационных и рациональных решений по освещению.",
           img: imgWorks3
         },
         {
-          id: 4,
+          id: 3,
           title: "Актив",
           description: "Актив - центр обслуживания бизнеса",
           img: imgWorks4
         },
         {
-          id: 5,
+          id: 4,
           title: "Apple City Corps",
           description: "Apple City Corps – один из крупнейших дистрибьюторов на территории Центральной Азии и Казахстана.",
           img: imgWorks5
         },
         {
-          id: 6,
+          id: 5,
           title: "CGService",
           description: "CGService - какую профессию выберет ваш ребенок?",
           img: imgWorks6
+        },
+        {
+          id: 6,
+          title: "AllurGroup",
+          description: "Allur - крупнейшая автомобильная компания Казахстана",
+          img: imgWorks1
         },
       ],
       steps: [
         {
           id: 1,
           title: "Сбор информации",
-          description: "Знакомство со сферой деятельности и обсуждение пожеланий",
+          description: "Исследования рынка и конкурентов, определение целевой аудитории, сбор обратной связи.",
         },
         {
           id: 2,
           title: "Тех. задание",
-          description: "Разработка технического задания. Описание ключевых моментов",
+          description: "Разработка технического задания. Определение основных характеристик, функциональности и ключевых показателей успеха.",
         },
         {
           id: 3,
           title: "Проектирование",
-          description: "Подготовка и проектирование. Составление плана будущего проекта",
+          description: "Выбор архитектуры. Создание плана разработки (распределение ресурсов, сроки и бюджет)",
         },
         {
           id: 4,
@@ -314,29 +314,29 @@ export default {
           description: "Разработка, согласование и утверждение персонального дизайна",
         },
         {
-          id: 5,
-          title: "Верстка",
-          description: "Индивидуальная адаптивная верстка (создание сайта) с чистым кодом",
-        },
-        {
           id: 6,
           title: "Кодирование",
-          description: "Программирование сайта, подключение необходимых скриптов и модулей",
+          description: "Разработка продукта, подключение необходимых скриптов и модулей",
         },
         {
           id: 7,
-          title: "Админ. панель",
-          description: "Интеграция сайта с системой управления. Подключение админ панели",
+          title: "Админ панель",
+          description: "Интеграция системы управления. Автоматизация процессов.",
+        },
+        {
+          id: 8,
+          title: "Тестирование",
+          description: "Функциональное, интеграционное и нагрузочное тестирование для обеспечения безопасности и безперебойной работы.",
         },
         {
           id: 8,
           title: "Наполнение",
-          description: "Наполнение сайта информацией. Создание разделов и подразделов",
+          description: "Создание контента: изображения, видео, аудио и другие мультимедийные элементы.",
         },
         {
           id: 9,
-          title: "Оптимизация",
-          description: "Поисковая оптимизация под ключевые запросы. Составление заголовков и описания",
+          title: "Маркетинг",
+          description: "Маркетинговая стратегия для продукта, включая продвижение и рекламу",
         },
       ],
       works: [
@@ -414,3 +414,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+</style>
