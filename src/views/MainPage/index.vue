@@ -93,7 +93,8 @@
               :wrapAround="true"
               class="absolute z-10 top-2 left-1/2 -translate-x-1/2 w-[77%]">
             <slide v-for="slide in slides" :key="slide">
-              <div class="scroll rounded-t-sm sm:rounded-t-2xl max-h-[145px] h-[145px] md:max-h-[335px] md:h-[335px] sm:max-h-[273px] sm:h-[273px] lg:max-h-[455px] lg:h-[455px] xl:max-h-[575px] xl:h-[575px] overflow-y-auto">
+              <div
+                  class="scroll rounded-t-sm sm:rounded-t-2xl max-h-[145px] h-[145px] md:max-h-[335px] md:h-[335px] sm:max-h-[273px] sm:h-[273px] lg:max-h-[455px] lg:h-[455px] xl:max-h-[575px] xl:h-[575px] overflow-y-auto">
                 <img class="w-full" :src="slide.img" alt="">
               </div>
             </slide>
@@ -153,7 +154,8 @@
         <div class="hidden justify-between lg:flex">
           <div @mouseover="activeStep = index" class="flex" v-for="(item, index) of steps" :key="index">
             <p style="text-orientation: mixed; writing-mode: vertical-lr;"
-               class="bg-mainColor text-end text-2xl font-black font-benzin px-7 py-9 rounded-2xl uppercase">{{ item.title }}</p>
+               class="bg-mainColor text-end text-2xl font-black font-benzin px-7 py-9 rounded-2xl uppercase">
+              {{ item.title }}</p>
             <div class="flex items-center justify-center">
               <p class="overflow-x-hidden flex items-center transition-all overflow-y-hidden py-16 w-0 text-2xl rounded-r-2xl"
                  :class="{ 'w-[255px] pr-5 pl-8 bg-blockBg h-[95%]' : activeStep === index }"><span>{{
@@ -177,7 +179,7 @@
     </div>
   </div>
   <div id="contacts" class="relative z-20 text-white pb-10">
-    <div class="container mx-auto px-4 lg:px-0">
+    <form @submit.prevent="sendMessageLocal" class="container mx-auto px-4 lg:px-0">
       <div class="mb-5">
         <h2 class="text-xl lg:text-5xl font-benzin font-black mb-5">Оставить заявку</h2>
         <p class="text-sm">Оставьте информацию о себе, мы перезвоним вам чтобы узнать детали</p>
@@ -197,33 +199,49 @@
         <div class="w-full lg:w-half flex flex-col mb-3 lg:mb-0">
           <div class="mb-4">
             <p class="text-lg mb-1">Имя</p>
-            <input class="p-4 rounded-[10px] bg-[#FCF8FF] w-full" type="text" placeholder="Ваше имя">
+            <input
+                v-model="form.name"
+                class="p-4 rounded-[10px] bg-[#FCF8FF] w-full"
+                :class="{ 'border-red-500': v$.form.name.$error }"
+                type="text" placeholder="Ваше имя">
           </div>
           <div class="mb-4">
             <p class="text-lg mb-1">Название </p>
-            <input class="p-4 rounded-[10px] bg-[#FCF8FF] w-full" type="text" placeholder="Название вашей организаций">
+            <input
+                class="p-4 rounded-[10px] bg-[#FCF8FF] w-full"
+                :class="{ 'border-red-500': v$.form.org_name.$error }" type="text"
+                placeholder="Название вашей организаций">
           </div>
           <div class="mb-4">
             <p class="text-lg mb-1">Телефон</p>
-            <input class="p-4 rounded-[10px] bg-[#FCF8FF] w-full" type="text" placeholder="+7 777 777 77 77">
+            <input
+                class="p-4 rounded-[10px] bg-[#FCF8FF] w-full"
+                :class="{ 'border-red-500': v$.form.phone_number.$error }" type="text" placeholder="+7 777 777 77 77">
           </div>
           <div>
             <p class="text-lg mb-1">Описание проекта</p>
-            <textarea cols="80" class="p-4 rounded-[10px] bg-[#FCF8FF] w-full"
-                      placeholder="Описание проекта"></textarea>
+            <textarea
+                cols="80" class="p-4 rounded-[10px] bg-[#FCF8FF] w-full"
+                :class="{ 'border-red-500': v$.form.note.$error }"
+                placeholder="Описание проекта"></textarea>
           </div>
         </div>
       </div>
       <div class="flex justify-end">
-        <p class="w-max bg-mainColor text-white px-[60px] py-5 rounded-2xl text-xl lg:text-3xl font-semibold">Отправить</p>
+        <p class="w-max bg-mainColor text-white px-[60px] py-5 rounded-2xl text-xl lg:text-3xl font-semibold">
+          Отправить</p>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
 import {useMeta} from "vue-meta";
 import {Carousel, Navigation, Slide} from 'vue3-carousel'
+import {useVuelidate} from "@vuelidate/core";
+import {required} from "@vuelidate/validators";
+import {inject} from "vue";
+
 import 'vue3-carousel/dist/carousel.css'
 import imgWorks1 from "@/assets/img/mainPage/works/1.png"
 import imgWorks2 from "@/assets/img/mainPage/works/2.png"
@@ -237,6 +255,7 @@ import img3 from "@/assets/img/mainPage/partners/3.png"
 import img4 from "@/assets/img/mainPage/partners/4.png"
 import img5 from "@/assets/img/mainPage/partners/5.png"
 import img6 from "@/assets/img/mainPage/partners/6.png"
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "MainPage",
@@ -247,13 +266,32 @@ export default {
   },
   setup() {
     useMeta({title: "Главная"});
+    const toast = inject('notify');
+    return {
+      v$: useVuelidate(), toast
+    };
+  },
+  validations() {
+    return {
+      form: {
+        name: {required},
+        org_name: {required},
+        phone_number: {required},
+        note: {required}
+      },
+    };
   },
   data() {
     return {
       currentSlideIndex: 0,
       activeBlock: 0,
       activeStep: 0,
-      form: {},
+      form: {
+        name: null,
+        org_name: null,
+        phone_number: null,
+        note: null
+      },
       slides: [
         {
           id: 1,
@@ -403,7 +441,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters(['getSendedMessage'])
+  },
   methods: {
+    ...mapActions(['sendMessage']),
     handleInit() {
       console.log('created')
     },
@@ -411,6 +453,36 @@ export default {
       console.log('slide-start', data)
       this.currentSlideIndex = data.currentSlideIndex
     },
+    async sendMessageLocal() {
+      this.loading = true;
+      this.v$.$validate();
+
+      if (this.v$.$invalid) {
+        this.loading = false;
+        this.toast(false, "Не все поля заполнены");
+        return;
+      }
+      await this.sendMessage(this.form)
+          .then(response => {
+            console.log(response)
+            this.loading = false;
+            this.toast(true, "Сообщение успешно доставлено");
+          })
+          .catch((error) => {
+            if (error.response.data.errors) {
+              if (Object.keys(error.response.data.errors).length > 0) {
+                Object.values(error.response.data.errors).forEach((err) => {
+                  this.toast(false, this.$t(err[0]))
+                })
+              }
+            } else {
+              this.toast(false, this.$t(error.response.data.message))
+            }
+          }).finally(() => {
+            this.loading = false;
+          })
+    },
+
   }
 }
 </script>
